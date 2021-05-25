@@ -29,7 +29,6 @@ jobs:
           echo test, and deploy your project.
           
       - name: Build, tag, and push image to Amazon ECR
-        id: build-image
         with:
           dockerfile: ./build/Dockerfile 
         env:
