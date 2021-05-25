@@ -38,7 +38,7 @@ jobs:
           
         run: |
           docker pull mcr.microsoft.com/windows/servercore/iis
-          docker build ${{image_name}}://${{registry}}:${{image_tag}}
+          docker build -t ${{image_name}}://${{registry}}:${{image_tag}}
          
      
     
