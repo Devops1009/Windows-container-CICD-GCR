@@ -35,7 +35,7 @@ jobs:
           image_name: myimage
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build  --file=Dockerfile -t myimage .
+          docker build  --file=indar99/win/Dockerfile -t myimage .
           
         
         
