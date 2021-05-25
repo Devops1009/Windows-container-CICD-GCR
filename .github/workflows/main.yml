@@ -27,8 +27,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-        
-      - uses: push-to-gcr-github-action@v3.0.2
+      
         with:
           gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
           registry : gcr.io
@@ -38,7 +37,7 @@ jobs:
           
         run: |
           docker pull mcr.microsoft.com/windows/servercore/iis
-          docker build -t ${{image_name}}://${{registry}}:${{image_tag}}
+          docker build -t iis 
          
      
     
