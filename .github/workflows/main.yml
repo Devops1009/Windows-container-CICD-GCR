@@ -31,9 +31,11 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
+  
+          image_name: myimage
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build  --file=indar99/win/Dockerfile -t myimage:$IMAGE_TAG:${{ github.sha }} .
+          docker build -f win.Dockerfile -t $image_name:$IMAGE_TAG .
         
         
       
