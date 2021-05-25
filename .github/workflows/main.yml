@@ -31,11 +31,11 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-  
           image_name: myimage
           IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build  --file=\win\Dockerfile -t myimage .
+        with:
+          dockerfile: ./build/Dockerfile
+         
           
         
         
