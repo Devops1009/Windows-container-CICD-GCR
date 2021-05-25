@@ -29,8 +29,8 @@ jobs:
           echo test, and deploy your project.
           
       - name: Build, tag, and push image to Amazon ECR
-        with:
-          dockerfile: ./build/Dockerfile 
+      
+        run:  ./build/Dockerfile 
         env:
           image_name: myimage
           IMAGE_TAG: ${{ github.sha }}
