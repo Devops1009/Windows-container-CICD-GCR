@@ -29,4 +29,4 @@ jobs:
           echo test, and deploy your project.
           
       - name: Pull image
-        run: docker pull mcr.microsoft.com/windows/servercore/iis
+        run: docker build -t myimage .
