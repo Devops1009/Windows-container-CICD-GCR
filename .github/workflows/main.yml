@@ -23,10 +23,12 @@ jobs:
         shell: powershell
       
       - name: get access on GCR
+       # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
-          registry : gcr.io
-          project_id: devops-313107
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT }}
+        
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -37,7 +39,7 @@ jobs:
       - name: build image
         run: |
           docker pull mcr.microsoft.com/windows/servercore/iis
-          docker image push mcr.microsoft.com/windows/servercore/iis
+          docker image push gcr.io/mcr.microsoft.com/windows/servercore/iis
          
      
     
