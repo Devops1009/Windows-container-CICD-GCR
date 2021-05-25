@@ -27,9 +27,17 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - uses: push-to-gcr-github-action@v3.0.2
+        with:
+          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+          registry: gcr.io
+          project_id: devops-313107
+          image_name: myimage
+          image_tag: ${{ steps.get_tag_name.outputs.GIT_TAG_NAME}}
+          dockerfile: ./build/Dockerfile
      
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name
+    
+    
         
          
           
