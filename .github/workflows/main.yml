@@ -27,13 +27,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      - name: Build, tag, and push image to Amazon ECR
-      
-        run:  ./build/Dockerfile 
-        env:
-          image_name: myimage
-          IMAGE_TAG: ${{ github.sha }}
+     
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)}
         
          
           
