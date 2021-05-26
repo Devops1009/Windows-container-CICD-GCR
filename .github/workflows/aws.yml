@@ -36,7 +36,7 @@ jobs:
         
     - name: authenticate gcloud 
       run: |-
-        gcloud auth activate-service-account $ACCOUNT_ID --key-file=key.json
+        gcloud auth activate-service-account test-360@devops-313107.iam.gserviceaccount.com --key-file=key.json
         
     - name: authenticate docker 
       run: |-
