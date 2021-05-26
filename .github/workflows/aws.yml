@@ -6,7 +6,7 @@ on:
   
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  IMAGE: IIS_server
+  IMAGE: iis_server
   ACCOUNT_ID: ${{ secrets.GKE_ACCOUNT }}
 
 name: Deploy to windows container to Google GCR
