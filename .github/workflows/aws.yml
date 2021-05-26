@@ -6,8 +6,8 @@ on:
   
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  IMAGE: static-site
-  ACCOUNT_ID: $${{ secrets.GKE_ACCOUNT }}
+  IMAGE: IIS_server
+  ACCOUNT_ID: ${{ secrets.GKE_ACCOUNT }}
 
 name: Deploy to windows container to Google GCR
 
@@ -36,7 +36,7 @@ jobs:
         
     - name: authenticate gcloud 
       run: |-
-        gcloud auth activate-service-account test-360@devops-313107.iam.gserviceaccount.com --key-file=key.json
+        gcloud auth activate-service-account $ACCOUNT_ID --key-file=key.json
         
     - name: authenticate docker 
       run: |-
