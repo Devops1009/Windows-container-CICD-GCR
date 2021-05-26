@@ -32,7 +32,7 @@ jobs:
       - name: build image
         shell: bash
         run: |
-          docker build -t myimage .
+          docker build --file=Dockerfile -t myimage .
      #     docker image push gcr.io/mcr.microsoft.com/windows/servercore/iis
     #  shell: powershell
          
