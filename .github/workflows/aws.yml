@@ -26,9 +26,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-
-
-
     # Build the Docker image
     - name: Build
       run: |-
