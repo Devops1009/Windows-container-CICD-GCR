@@ -33,7 +33,7 @@ jobs:
         
     - name: authenticate gcloud 
       run: |-
-        gcloud auth activate-service-account $ACCOUNT_ID --key-file=key.json
+        gcloud auth activate-service-account $ACCOUNT_ID --key-file=${{ secrets.GKE_KEY_JSON }}
         
     - name: authenticate docker 
       run: |-
