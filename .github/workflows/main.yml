@@ -20,12 +20,7 @@ jobs:
       - run: Write-Host "This step runs in PowerShell Core"
         shell: pwsh
       - run: Write-Host "This step runs in PowerShell"
-        shell: powershell 
- 
-      - uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
-          project_id: ${{ secrets.GKE_PROJECT }}
+        shell: powershell
         
 
       # Runs a set of commands using the runners shell
@@ -36,8 +31,9 @@ jobs:
         
       - name: build image
         run: |
-          docker pull mcr.microsoft.com/windows/servercore/iis
-          docker image push gcr.io/mcr.microsoft.com/windows/servercore/iis
+          docker build -t myimage .
+     #     docker image push gcr.io/mcr.microsoft.com/windows/servercore/iis
+        shell: powershell
          
      
     
