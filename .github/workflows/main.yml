@@ -30,7 +30,9 @@ jobs:
           echo test, and deploy your project
         
       - name: build image
-        shell: docker build -t myimage .
+        shell: bash
+        run: |
+          docker build -t myimage .
      #     docker image push gcr.io/mcr.microsoft.com/windows/servercore/iis
     #  shell: powershell
          
