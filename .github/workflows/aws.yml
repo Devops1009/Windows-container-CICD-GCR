@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
   
 env:
@@ -55,10 +55,10 @@ jobs:
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE"
         
-    - name: Move cache
-      run: |
-        del  /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+#    - name: Move cache
+#      run: |
+#        del  /tmp/.buildx-cache
+#        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
 
     
