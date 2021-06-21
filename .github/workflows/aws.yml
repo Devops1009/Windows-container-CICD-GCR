@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - main
+    - master
   pull_request:
   
 env:
@@ -25,15 +25,26 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT }}
+        
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
       
     # Build the Docker image
     - name: Build
       run: |-
         docker build -t  "gcr.io/$PROJECT_ID/$IMAGE" .
         
-    - name: authenticate gcloud 
-      run: |-
-        gcloud auth activate-service-account $ACCOUNT_ID --key-file=key.json
+#    - name: authenticate gcloud 
+#      run: |-
+#        gcloud auth activate-service-account $ACCOUNT_ID --key-file=key.json
         
     - name: authenticate docker 
       run: |-
@@ -43,6 +54,11 @@ jobs:
     - name: Publish
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE"
+        
+    - name: Move cache
+      run: |
+        del  /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
 
     
