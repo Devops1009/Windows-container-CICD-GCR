@@ -52,13 +52,13 @@ jobs:
         
     - uses: actions/checkout@v2
       with:
-        service_account_key: ${{ secrets.GKE_SA_KEY }}
-        project_id: ${{ secrets.GKE_PROJECT }}
+     #   service_account_key: ${{ secrets.GKE_SA_KEY }}
+      #  project_id: ${{ secrets.GKE_PROJECT }}
 
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE"
+    #    docker push "gcr.io/$PROJECT_ID/$IMAGE"
         
 #    - name: Move cache
 #      run: |
